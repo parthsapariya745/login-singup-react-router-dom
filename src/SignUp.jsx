@@ -1,23 +1,24 @@
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 function SignUp() {
-  let em = 'admin@gmail.com'
-  let pass = 'admin@123'
-  
   let [email, setEmail] = useState("")
   let [password, setPassword] = useState("")
 
   let navigate = useNavigate()
 
   let handleSignUp = () => {
-    if (em === email && pass === password) {
-      alert("Signup Successfully")
-      navigate("/")
+    if (email && password) {
+      alert("Account Created Successfully")
+      navigate("/Login")
     }
     else {
-      alert("Invalid")
+      alert("Please enter your email and password")
     }
+
+    localStorage.setItem("email", JSON.stringify(email))
+    localStorage.setItem("password", JSON.stringify(password))
+    
     setEmail("")
     setPassword("")
   }
@@ -25,9 +26,12 @@ function SignUp() {
   return (
     <div className="signup">
         <h1>SignUp</h1>
-        <input type="email" placeholder="Enter email" onChange={(e)=> setEmail(e.target.value)} value={email}/>
-        <input type="password" placeholder="Enter password" onChange={(e)=> setPassword(e.target.value)} value={password}/>
-        <button onClick={handleSignUp}>SignUp</button>
+        <form action="">
+          <input type="email" placeholder="Enter new email" onChange={(e)=> setEmail(e.target.value)} value={email} required/>
+          <input type="password" placeholder="Enter new password" onChange={(e)=> setPassword(e.target.value)} value={password} required/>
+          <button onClick={handleSignUp}>Create Account</button>
+          <Link to="/Login"><p className="same">Login</p></Link>
+        </form>
     </div>
   )
 }

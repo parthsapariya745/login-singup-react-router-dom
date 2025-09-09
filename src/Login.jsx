@@ -2,32 +2,32 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  let user = "admin"
-  let pass = "admin@123"
+  let em = JSON.parse(localStorage.getItem("email"))
+  let pass = JSON.parse(localStorage.getItem("password"))
 
-  let [userName, setUserName] = useState("");
+  let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
 
   let navigate = useNavigate()
 
   let handleLogin = () => {
-    if (user === userName && pass === password) {
+    if (email === em && pass === password) {
       alert("Login Successfully")
       navigate('/Home')
     }
     else {
       alert("Invalid")
     }
-    setUserName("")
+    setEmail("")
     setPassword("")
   }
   return (
     <div className="login">
       <h1>Login</h1>
-      <input type="text" onChange={(e)=> setUserName(e.target.value)} value={userName} placeholder="Enter Username" />
+      <input type="email" onChange={(e)=> setEmail(e.target.value)} value={email} placeholder="Enter Email" />
       <input type="password" onChange={(e)=> setPassword(e.target.value)} value={password} placeholder="Enter Password" />
       <button onClick={handleLogin}>Login</button>
-      <p>Don't have an account? <Link to='/SignUp' className="sign">SignUp</Link></p>
+      <p>Don't have an account? <Link to='/' className="same">SignUp</Link></p>
     </div>
   );
 }
