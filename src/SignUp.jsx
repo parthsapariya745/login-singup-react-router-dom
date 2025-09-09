@@ -18,20 +18,21 @@ function SignUp() {
 
     localStorage.setItem("email", JSON.stringify(email))
     localStorage.setItem("password", JSON.stringify(password))
-    
+
     setEmail("")
     setPassword("")
   }
 
   return (
-    <div className="signup">
+    <div className="container">
+      <div className="signup">
         <h1>SignUp</h1>
         <form action="">
-          <input type="email" placeholder="Enter new email" onChange={(e)=> setEmail(e.target.value)} value={email} required/>
-          <input type="password" placeholder="Enter new password" onChange={(e)=> setPassword(e.target.value)} value={password} required/>
+          <input type="email" placeholder="Enter new email" onChange={(e) => setEmail(e.target.value)} value={email} required />
+          <input type="password" placeholder="Enter new password" onChange={(e) => setPassword(e.target.value)} value={password} required />
           <button onClick={handleSignUp}>Create Account</button>
-          <Link to="/Login"><p className="same">Login</p></Link>
         </form>
+      </div>
     </div>
   )
 }

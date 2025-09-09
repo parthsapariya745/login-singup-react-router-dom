@@ -22,12 +22,14 @@ function Login() {
     setPassword("")
   }
   return (
-    <div className="login">
-      <h1>Login</h1>
-      <input type="email" onChange={(e)=> setEmail(e.target.value)} value={email} placeholder="Enter Email" />
-      <input type="password" onChange={(e)=> setPassword(e.target.value)} value={password} placeholder="Enter Password" />
-      <button onClick={handleLogin}>Login</button>
-      <p>Don't have an account? <Link to='/' className="same">SignUp</Link></p>
+    <div className="container">
+      <div className="login">
+        <h1>Login</h1>
+        <input type="email" onChange={(e)=> setEmail(e.target.value)} value={email} placeholder="Enter Email" />
+        <input type="password" onChange={(e)=> setPassword(e.target.value)} value={password} placeholder="Enter Password" />
+        <button onClick={handleLogin}>Login</button>
+        <p>Don't have an account? <Link to='/' className="same">SignUp</Link></p>
+      </div>
     </div>
   );
 }
