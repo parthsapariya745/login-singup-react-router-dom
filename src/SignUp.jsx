@@ -11,13 +11,13 @@ function SignUp() {
     if (email && password) {
       alert("Account Created Successfully")
       navigate("/Login")
+      
+      localStorage.setItem("email", JSON.stringify(email))
+      localStorage.setItem("password", JSON.stringify(password))
     }
     else {
       alert("Please enter your email and password")
     }
-
-    localStorage.setItem("email", JSON.stringify(email))
-    localStorage.setItem("password", JSON.stringify(password))
 
     setEmail("")
     setPassword("")

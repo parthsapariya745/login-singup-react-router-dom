@@ -6,8 +6,8 @@ function Home() {
           <h1>Welcome to the Future</h1>
           <p class="subtitle">Experience innovation like never before with our cutting-edge solutions designed to transform your digital journey.</p>
           <div class="cta-buttons">
-            <a href="#" class="btn btn-primary">Get Started</a>
-            <a href="#" class="btn btn-secondary">Learn More</a>
+            <a href="#" class="btn2 btn-primary">Get Started</a>
+            <a href="#" class="btn2 btn-secondary">Learn More</a>
           </div>
         </div>
       </main>
