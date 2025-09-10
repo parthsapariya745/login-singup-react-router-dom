@@ -752,6 +752,15 @@ body {
   resize: none;
   height: 120px;
 }
+.add-to-cart{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 14px;border-radius:8px;
+  background:#fff;border:1px solid #0B66FF;
+  color:#0B66FF;font-weight:600;cursor:pointer;
+  margin-top: 10px;
+  transition: .4s;
+}
+.add-to-cart:hover{background:#0B66FF;color:#fff;}
 @media (max-width: 768px) {
   .nav-links {
     position: fixed;

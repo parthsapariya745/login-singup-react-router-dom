@@ -12,6 +12,9 @@ const Product = () => {
                                 <h1 className="product-title">Name: {e.productName}</h1>
                                 <p className="product-price">Price: ₹{e.productPrice}</p>
                                 <span className="product-desc">Description: {e.productDescription}</span>
+                                <button className="add-to-cart" type="button">
+                                    <span className="btn-text">Add to Cart</span>
+                                </button>
                             </div>
                         </div>
                     )
