@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 const AdminProduct = () => {
   let [productBox, setProductBox] = useState(JSON.parse(localStorage.getItem("products")) || [])
@@ -8,17 +8,15 @@ const AdminProduct = () => {
   let [productDescription, setProductDescription] = useState("")
 
   let handleAddProduct = () => {
-    setProductBox([...productBox, {productName, productURL, productPrice, productDescription}])
-
+    let newProducts = [...productBox,{ productName, productURL, productPrice, productDescription }]
+    setProductBox(newProducts)
+    localStorage.setItem("products", JSON.stringify(newProducts))
+    
     setProductName("")
     setProductURL("")
     setProductPrice("")
     setProductDescription("")
   }
-
-  useEffect(() => {
-    localStorage.setItem("products", JSON.stringify(productBox))
-  }, [productBox])
 
   return (
     <div className="admin-box">

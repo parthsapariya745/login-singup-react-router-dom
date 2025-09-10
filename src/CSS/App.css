@@ -635,6 +635,65 @@ body {
   line-height: 1.4;
   display: block;
 }
+.button-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+/* Common button style */
+.add-to-cart, .edit-btn, .delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #ddd;
+  transition: 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+/* Add to Cart */
+.add-to-cart, .edit-btn {
+  color: #0b66ff;
+  border-color: #0b66ff;
+}
+.add-to-cart:hover {
+  background: #0b66ff;
+  color: #fff;
+}
+.add-to-cart:hover svg path {
+  stroke: #fff;
+}
+/* Edit Button */
+.edit-btn {
+  padding: 8px;
+}
+.edit-btn:hover {
+  background: #0b66ff;
+}
+.edit-btn:hover svg path {
+  stroke: #fff;
+}
+/* Delete Button */
+.delete-btn {
+  color: #e63946;
+  border-color: #e63946;
+  padding: 8px;
+}
+.delete-btn:hover {
+  background: #e63946;
+}
+.delete-btn:hover svg {
+  stroke: #fff;
+}
+.delete-btn:hover svg path, .delete-btn:hover line {
+  stroke: #fff;
+}
 /* Common Section Styles */
 .section-title {
   font-size: 28px;
@@ -752,15 +811,6 @@ body {
   resize: none;
   height: 120px;
 }
-.add-to-cart{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:10px 14px;border-radius:8px;
-  background:#fff;border:1px solid #0B66FF;
-  color:#0B66FF;font-weight:600;cursor:pointer;
-  margin-top: 10px;
-  transition: .4s;
-}
-.add-to-cart:hover{background:#0B66FF;color:#fff;}
 @media (max-width: 768px) {
   .nav-links {
     position: fixed;
