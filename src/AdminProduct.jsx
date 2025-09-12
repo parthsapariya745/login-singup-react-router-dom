@@ -41,7 +41,7 @@ const AdminProduct = () => {
         </form>
       </div>
 
-      <div className="product-box" style={{marginBlock: "40px"}}>
+      <div className="product-box" style={{marginBlock: "40px", paddingInline: "3vw"}}>
         {productBox.map((e, i) => {
           return (
             <div key={i} className="product-card">
