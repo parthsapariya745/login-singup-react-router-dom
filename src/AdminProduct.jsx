@@ -8,9 +8,14 @@ const AdminProduct = () => {
   let [productDescription, setProductDescription] = useState("")
 
   let handleAddProduct = () => {
-    let newProducts = [...productBox,{ productName, productURL, productPrice, productDescription }]
-    setProductBox(newProducts)
-    localStorage.setItem("products", JSON.stringify(newProducts))
+    if (productName && productURL && productPrice && productDescription) {
+      let newProducts = [...productBox,{ productName, productURL, productPrice, productDescription }]
+      setProductBox(newProducts)
+      localStorage.setItem("products", JSON.stringify(newProducts))
+      alert("Product Add successfully")
+    } else {
+      alert("Please fill out Product Details")
+    }
     
     setProductName("")
     setProductURL("")
@@ -21,11 +26,13 @@ const AdminProduct = () => {
   return (
     <div className="admin-box">
       <h1>Product Details</h1>
-      <input type="text" onChange={(e) => setProductName(e.target.value)} value={productName} placeholder="Enter product name" />
-      <input type="text" onChange={(e) => setProductURL(e.target.value)} value={productURL} placeholder="Enter product img URL" />
-      <input type="number" onChange={(e) => setProductPrice(e.target.value)} value={productPrice} placeholder="Enter product price" />
-      <input type="text" onChange={(e) => setProductDescription(e.target.value)} value={productDescription} placeholder="Enter product description" />
-      <button onClick={handleAddProduct}>Add Product</button>
+      <form action="">
+        <input type="text" onChange={(e) => setProductName(e.target.value)} value={productName} placeholder="Enter product name" required />
+        <input type="text" onChange={(e) => setProductURL(e.target.value)} value={productURL} placeholder="Enter product img URL" required />
+        <input type="number" onChange={(e) => setProductPrice(e.target.value)} value={productPrice} placeholder="Enter product price" required />
+        <input type="text" onChange={(e) => setProductDescription(e.target.value)} value={productDescription} placeholder="Enter product description" required />
+        <button onClick={handleAddProduct}>Add Product</button>
+      </form>
     </div>
   )
 }
