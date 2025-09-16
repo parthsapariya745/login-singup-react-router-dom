@@ -14,20 +14,22 @@ const AdminProduct = () => {
   let handleAddOrUpdateProduct = () => {
     if (btn) {
       if (productName && productURL && productPrice && productDescription) {
+        alert("Product Add successfully")
+
         let newProducts = [...productBox, { productName, productURL, productPrice, productDescription }]
         setProductBox(newProducts)
         localStorage.setItem("products", JSON.stringify(newProducts))
-        alert("Product Add successfully")
       } else {
         alert("Please fill out Product Details")
       }
     }
     else {
+      alert("Product Sucessfully Updated")
       setBtn(true)
-      productBox[index] = productName
-      productBox[index] = productURL
-      productBox[index] = productPrice
-      productBox[index] = productDescription
+      
+      productBox[index] = { productName, productURL, productPrice, productDescription }
+      setProductBox([...productBox])
+      localStorage.setItem("products", JSON.stringify([...productBox]))
     }
 
     setProductName("")
@@ -55,10 +57,10 @@ const AdminProduct = () => {
       <div className="admin-box">
         <h1>Product Details</h1>
         <form action="">
-          <input type="text" onChange={(e) => setProductName(e.target.value)} value={productName} placeholder="Enter product name" required />
-          <input type="text" onChange={(e) => setProductURL(e.target.value)} value={productURL} placeholder="Enter product img URL" required />
-          <input type="number" onChange={(e) => setProductPrice(e.target.value)} value={productPrice} placeholder="Enter product price" required />
-          <input type="text" onChange={(e) => setProductDescription(e.target.value)} value={productDescription} placeholder="Enter product description" required />
+          <input type="text" onChange={(e) => setProductName(e.target.value)} value={productName} placeholder="Enter product name" />
+          <input type="text" onChange={(e) => setProductURL(e.target.value)} value={productURL} placeholder="Enter product img URL" />
+          <input type="number" onChange={(e) => setProductPrice(e.target.value)} value={productPrice} placeholder="Enter product price" />
+          <input type="text" onChange={(e) => setProductDescription(e.target.value)} value={productDescription} placeholder="Enter product description" />
           <button onClick={handleAddOrUpdateProduct}>{btn ? "Add" : "Update"} Product</button>
         </form>
       </div>
