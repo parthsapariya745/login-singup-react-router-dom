@@ -14,6 +14,12 @@ const Admin = () => {
             alert("Login Successfully")
             navigate("/AdminProduct")
         }
+        else if (addName !== adminName && addPassword === adminPassword) {
+            alert("Admin name are incorrect")
+        }
+        else if (addName === adminName && addPassword !== adminPassword) {
+            alert("Admin password are incorrect")
+        }
         else {
             alert("Admin name and password are incorrect")
             navigate("/Home")

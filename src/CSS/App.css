@@ -658,12 +658,12 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 /* Add to Cart */
-.add-to-cart, .edit-btn {
-  color: #0b66ff;
-  border-color: #0b66ff;
+.add-to-cart {
+  color: #23CE7F;
+  border-color: #23CE7F;
 }
 .add-to-cart:hover {
-  background: #0b66ff;
+  background: #23CE7F;
   color: #fff;
 }
 .add-to-cart:hover svg path {
@@ -671,6 +671,8 @@ body {
 }
 /* Edit Button */
 .edit-btn {
+  color: #0b66ff;
+  border-color: #0b66ff;
   padding: 8px;
 }
 .edit-btn:hover {
