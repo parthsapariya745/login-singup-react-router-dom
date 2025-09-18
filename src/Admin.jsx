@@ -7,20 +7,14 @@ const Admin = () => {
     let navigate = useNavigate()
 
     let handleLogin = () => {
-        let addName = "admin-parth"
-        let addPassword = "parth$123"
+        let aName = "admin-parth"
+        let aPassword = "parth$123"
 
-        if (addName === adminName && addPassword === adminPassword) {
+        if (aName === adminName && aPassword === adminPassword) {
             alert("Login Successfully")
             navigate("/AdminProduct")
         } else {
-            if (addName !== adminName && addPassword !== adminPassword) {
-                alert("Admin name and password are incorrect");
-            } else if (addName !== adminName) {
-                alert("Admin name is incorrect");
-            } else {
-                alert("Admin password is incorrect");
-            }
+            aName !== adminName && aPassword !== adminPassword ? alert("Invalid admin name and password") : aName !== adminName ? alert("Invalid admin name") : alert("Invalid admin password")
             navigate("/Home");
         }
     }
