@@ -16,8 +16,7 @@ const Admin = () => {
         } else {
             aName !== adminName && aPassword !== adminPassword ? alert("Invalid admin name and password") : aName !== adminName ? alert("Invalid admin name") : alert("Invalid admin password")
         }
-        setAdminName("")
-        setAdminPassword("")
+        setAdminName(""), setAdminPassword("")
     }
     return (
         <div className="admin-box">

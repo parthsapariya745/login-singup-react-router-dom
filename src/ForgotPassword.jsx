@@ -17,8 +17,7 @@ const ForgotPassword = () => {
     else {
       alert("Set password and Confirm password are not same")
     }
-    setNewPassword("")
-    setConfirmPassword("")
+    setNewPassword(""), setConfirmPassword("")
   }
   return (
     <div className="container">

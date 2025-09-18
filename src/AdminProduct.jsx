@@ -32,10 +32,7 @@ const AdminProduct = () => {
       localStorage.setItem("products", JSON.stringify([...productBox]))
     }
 
-    setProductName("")
-    setProductURL("")
-    setProductPrice("")
-    setProductDescription("")
+    setProductName(""), setProductURL(""), setProductPrice(""), setProductDescription("")
   }
 
   let handleEdit = (i) => {

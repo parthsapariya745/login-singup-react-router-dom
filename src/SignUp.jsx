@@ -19,8 +19,7 @@ function SignUp() {
       alert("Please enter your email and password")
     }
 
-    setEmail("")
-    setPassword("")
+    setEmail(""), setPassword("")
   }
 
   return (

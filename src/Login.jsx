@@ -18,8 +18,7 @@ function Login() {
     else {
       alert("Invalid")
     }
-    setEmail("")
-    setPassword("")
+    setEmail(""), setPassword("")
   }
   return (
     <div className="container">
