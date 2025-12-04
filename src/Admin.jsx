@@ -11,7 +11,7 @@ const Admin = () => {
         let aPassword = "parth$123"
 
         if (aName === adminName && aPassword === adminPassword) {
-            alert("Login Successfully")
+            alert("Admin Login Successfully")
             navigate("/AdminProduct")
         } else {
             aName !== adminName && aPassword !== adminPassword ? alert("Invalid admin name and password") : aName !== adminName ? alert("Invalid admin name") : alert("Invalid admin password")
@@ -23,7 +23,7 @@ const Admin = () => {
             <h1>Admin Login</h1>
             <input type="text" onChange={(e) => setAdminName(e.target.value)} value={adminName} placeholder="Enter Admin name" />
             <input type="password" onChange={(e) => setAdminPassword(e.target.value)} value={adminPassword} placeholder="Enter Admin Password" />
-            <button onClick={handleLogin}>Login</button>
+            <button onClick={handleLogin}>Admin Login</button>
         </div>
     )
 }

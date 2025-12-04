@@ -28,7 +28,7 @@ function Login() {
         <input type="password" onChange={(e)=> setPassword(e.target.value)} value={password} placeholder="Enter Password" />
         <p className="pass-container"><Link to='/ForgotPassword' className="fpass">Forgot password?</Link></p>
         <button onClick={handleLogin}>Login</button>
-        <p>Don't have an account? <Link to='/' className="same">SignUp</Link></p>
+        <p>Don't have an account? <Link to='/SignUp' className="same">SignUp</Link></p>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ function SignUp() {
   let handleSignUp = () => {
     if (email && password) {
       alert("Account Created Successfully")
-      navigate("/Login")
+      navigate("/")
       
       localStorage.setItem("email", JSON.stringify(email))
       localStorage.setItem("password", JSON.stringify(password))
@@ -30,6 +30,7 @@ function SignUp() {
           <input type="email" placeholder="Enter new email" onChange={(e) => setEmail(e.target.value)} value={email} required />
           <input type="password" placeholder="Enter new password" onChange={(e) => setPassword(e.target.value)} value={password} required />
           <button onClick={handleSignUp}>Create Account</button>
+          <p>Do you have an account? <Link to='/' className="same">SignIn</Link></p>
         </form>
       </div>
     </div>
