@@ -32,11 +32,22 @@ const AdminProduct = () => {
       }
     }
     else {
-      alert("Product Sucessfully Updated")
-      setBtn(true)
+      try {
+        const res = await axios.put(`http://localhost:5000/app/product/updateProduct/${productBox[index]._id}`, {
+          productName,
+          productURL,
+          productPrice,
+          productDescription
+        })
 
-      productBox[index] = { productName, productURL, productPrice, productDescription }
-      setProductBox([...productBox])
+        alert("Product Sucessfully Updated")
+        setBtn(true)
+  
+        productBox[index] = res.data.productData
+        setProductBox([...productBox])
+      } catch (error) {
+        console.log("Product update error", error);
+      }
     }
     setProductName(""), setProductURL(""), setProductPrice(""), setProductDescription("")
   }
