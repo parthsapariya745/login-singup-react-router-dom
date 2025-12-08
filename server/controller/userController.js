@@ -8,11 +8,6 @@ exports.handleAddProduct = async (req, res) => {
             res.status(404).json({ success: false, message: "All Fields require" });
         }
 
-        const existingProuduct = await Product.findOne({ productName })
-        if (existingProuduct) {
-            res.status(404).json({ success: false, message: "Product already added" });
-        }
-
         const productData = await Product.create({ productName, productURL, productPrice, productDescription })
 
         res.status(200).json({ message: true, message: "product add successfully", productData })

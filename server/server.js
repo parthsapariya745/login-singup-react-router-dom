@@ -4,12 +4,12 @@ const router = require("./routes/userRoute")
 const cors = require("cors")
 
 const app = express()
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
-app.use("/app/product", router)
 app.use(cors({
     origin: "http://localhost:5173"
 }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use("/app/product", router)
 
 connectDB()
 

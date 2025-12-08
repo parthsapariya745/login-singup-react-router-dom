@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const AdminProduct = () => {
   let [productBox, setProductBox] = useState([])
@@ -41,6 +41,19 @@ const AdminProduct = () => {
     setProductName(""), setProductURL(""), setProductPrice(""), setProductDescription("")
   }
 
+  useEffect(() => {
+    let handleGetProduct = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/app/product/getAllProduct");
+        setProductBox(res.data.allProductData);        
+      } catch (error) {
+        console.log("Products error", error);
+      }
+    }
+
+    handleGetProduct()
+  }, [])
+
   let handleEdit = (i) => {
     setProductName(productBox[i].productName)
     setProductURL(productBox[i].productURL)
@@ -71,7 +84,9 @@ const AdminProduct = () => {
         {productBox.map((e, i) => {
           return (
             <div key={i} className="product-card">
-              <img src={e.productURL} alt="" />
+              <div class="product-img">
+                <img src={e.productURL} height="100%" alt="" />
+              </div>
               <div className="card-content">
                 <h1 className="product-title">Name: {e.productName}</h1>
                 <p className="product-price">Price: ₹{e.productPrice}</p>

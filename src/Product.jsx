@@ -1,12 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const Product = () => {
     let [productBox, setProductBox] = useState([])
-
-    useEffect(() => {
-        let product = JSON.parse(localStorage.getItem("products")) || []
-        setProductBox(product)
-    }, []) 
 
     return (
         <div className="product-container">
