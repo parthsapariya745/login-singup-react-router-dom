@@ -28,7 +28,7 @@ const AdminProduct = () => {
           alert("Please fill out Product Details")
         }
       } catch (error) {
-        console.log("Product not add", error);
+        console.log("Product add error", error);
       }
     }
     else {
@@ -47,7 +47,7 @@ const AdminProduct = () => {
         const res = await axios.get("http://localhost:5000/app/product/getAllProduct");
         setProductBox(res.data.allProductData);        
       } catch (error) {
-        console.log("Products error", error);
+        console.log("Products get error", error);
       }
     }
 
@@ -63,8 +63,13 @@ const AdminProduct = () => {
     setIndex(i)
   }
 
-  let handleDelete = (i) => {
-    setProductBox(productBox.filter((_, j) => i !== j))
+  let handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/app/product/deleteProduct/${id}`)
+      setProductBox(productBox.filter((product) => id !== product._id))
+    } catch (error) {
+      console.log("Products delete error", error);
+    }
   }
 
   return (
@@ -104,7 +109,7 @@ const AdminProduct = () => {
                     </svg>
                   </button>
 
-                  <button className="delete-btn" type="button" onClick={() => handleDelete(i)}>
+                  <button className="delete-btn" type="button" onClick={() => handleDelete(e._id)}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                       <path d="M3 6h18" stroke="#e63946" strokeWidth="2" strokeLinecap="round" />
                       <path d="M8 6V4h8v2" stroke="#e63946" strokeWidth="2" />

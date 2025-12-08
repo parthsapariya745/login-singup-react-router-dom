@@ -1,7 +1,21 @@
-import { useState } from "react"
+import axios from "axios"
+import { useEffect, useState } from "react"
 
 const Product = () => {
     let [productBox, setProductBox] = useState([])
+
+    useEffect(() => {
+        let handleGetProduct = async () => {
+            try {
+                const res = await axios.get("http://localhost:5000/app/product/getAllProduct");
+                setProductBox(res.data.allProductData);
+            } catch (error) {
+                console.log("Products error", error);
+            }
+        }
+
+        handleGetProduct()
+    }, [])
 
     return (
         <div className="product-container">
