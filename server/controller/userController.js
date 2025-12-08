@@ -8,12 +8,12 @@ exports.handleAddProduct = async (req, res) => {
             res.status(404).json({ success: false, message: "All Fields require" });
         }
 
-        const existingProuduct = Product.findOne({ productName, productURL, productPrice, productDescription })
+        const existingProuduct = await Product.findOne({ productName })
         if (existingProuduct) {
-            res.status(404).json({ success: false, message: "Product already add" });
+            res.status(404).json({ success: false, message: "Product already added" });
         }
 
-        const productData = Product.create({ productName, productURL, productPrice, productDescription })
+        const productData = await Product.create({ productName, productURL, productPrice, productDescription })
 
         res.status(200).json({ message: true, message: "product add successfully", productData })
     } catch (error) {
@@ -34,7 +34,7 @@ exports.handleGetProductById = async (req, res) => {
     try {
         const id = req.params.id;
 
-        const productData = Product.findById(id);
+        const productData = await Product.findById(id);
         if (!productData) {
             res.status(404).json({ success: false, message: "Product Not Found" });
         }

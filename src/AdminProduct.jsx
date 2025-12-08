@@ -1,7 +1,8 @@
+import axios from "axios"
 import { useState } from "react"
 
 const AdminProduct = () => {
-  let [productBox, setProductBox] = useState(JSON.parse(localStorage.getItem("products")) || [])
+  let [productBox, setProductBox] = useState([])
   let [productName, setProductName] = useState("")
   let [productURL, setProductURL] = useState("")
   let [productPrice, setProductPrice] = useState("")
@@ -9,29 +10,34 @@ const AdminProduct = () => {
   let [btn, setBtn] = useState(true)
   let [index, setIndex] = useState(null)
 
-  localStorage.setItem("products", JSON.stringify(productBox))
-
-  let handleAddOrUpdateProduct = () => {
+  let handleAddOrUpdateProduct = async () => {
     if (btn) {
-      if (productName && productURL && productPrice && productDescription) {
-        alert("Product Add successfully")
+      try {
+        if (productName && productURL && productPrice && productDescription) {
+          const res = await axios.post("http://localhost:5000/app/product/addProduct", {
+            productName,
+            productURL,
+            productPrice,
+            productDescription
+          })
+          
+          alert("Product Add successfully")
 
-        let newProducts = [...productBox, { productName, productURL, productPrice, productDescription }]
-        setProductBox(newProducts)
-        localStorage.setItem("products", JSON.stringify(newProducts))
-      } else {
-        alert("Please fill out Product Details")
+          setProductBox([...productBox, res.data.productData])
+        } else {
+          alert("Please fill out Product Details")
+        }
+      } catch (error) {
+        console.log("Product not add", error);
       }
     }
     else {
       alert("Product Sucessfully Updated")
       setBtn(true)
-      
+
       productBox[index] = { productName, productURL, productPrice, productDescription }
       setProductBox([...productBox])
-      localStorage.setItem("products", JSON.stringify([...productBox]))
     }
-
     setProductName(""), setProductURL(""), setProductPrice(""), setProductDescription("")
   }
 
@@ -46,7 +52,6 @@ const AdminProduct = () => {
 
   let handleDelete = (i) => {
     setProductBox(productBox.filter((_, j) => i !== j))
-    localStorage.setItem("products", JSON.stringify(productBox.filter((_, j) => i !== j)))
   }
 
   return (
@@ -62,7 +67,7 @@ const AdminProduct = () => {
         </form>
       </div>
 
-      <div className="product-box" style={{marginBlock: "40px", paddingInline: "3vw"}}>
+      <div className="product-box" style={{ marginBlock: "40px", paddingInline: "3vw" }}>
         {productBox.map((e, i) => {
           return (
             <div key={i} className="product-card">

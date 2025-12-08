@@ -1,9 +1,9 @@
 const Contact = () => {
     return (
-        <div class="contact-section">
-            <h2 class="section-title">Contact Us</h2>
-            <p class="section-subtitle">We’d love to hear from you. Get in touch!</p>
-            <form class="contact-form">
+        <div className="contact-section">
+            <h2 className="section-title">Contact Us</h2>
+            <p className="section-subtitle">We’d love to hear from you. Get in touch!</p>
+            <form className="contact-form">
                 <input type="text" placeholder="Your Name" required />
                 <input type="email" placeholder="Your Email" required />
                 <textarea placeholder="Your Message" required></textarea>
